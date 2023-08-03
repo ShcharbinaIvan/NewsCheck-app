@@ -6,4 +6,13 @@
     <string name="first_onboard_text">Watch the latest news from around the world</string>
     <string name="second_onboard_text">Add your favorite news to your collection</string>
     <string name="third_onboard_text">Choose the categories you like</string>
+    <string name="first_name">First Name</string>
+    <string name="second_name">Second Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="already_registered_go_to_login">Already registered? Go to login</string>
+    <string name="sign_in">Sign In</string>
+    <string name="don_t_have_an_account_register">Don\'t have an account? Register</string>
 </resources>
