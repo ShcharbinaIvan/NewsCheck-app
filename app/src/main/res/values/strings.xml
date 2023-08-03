@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">NewsCheck</string>
+    <string name="skip">Skip</string>
+    <string name="newscheck">NewsCheck</string>
+    <string name="onboardingimage">OnboardingImage</string>
+    <string name="first_onboard_text">Watch the latest news from around the world</string>
+    <string name="second_onboard_text">Add your favorite news to your collection</string>
+    <string name="third_onboard_text">Choose the categories you like</string>
 </resources>
