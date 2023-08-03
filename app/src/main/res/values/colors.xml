@@ -2,4 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="selected_circle">#0069cc</color>
+    <color name="unselected_circle">#90c9ff</color>
 </resources>
