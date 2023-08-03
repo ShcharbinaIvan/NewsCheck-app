@@ -4,4 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="selected_circle">#0069cc</color>
     <color name="unselected_circle">#90c9ff</color>
+    <color name="red">#900000</color>
+    <color name="button_color">#000080</color>
+    <color name="background">#fcf1cc  </color>
 </resources>

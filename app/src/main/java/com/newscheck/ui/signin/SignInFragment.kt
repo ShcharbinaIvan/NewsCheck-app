@@ -1,4 +1,4 @@
-package com.newscheck.ui.onboarding
+package com.newscheck.ui.signin
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,33 +6,32 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.newscheck.R
-import com.newscheck.databinding.FragmentOnboardingBinding
-import com.newscheck.ui.onboarding.adapter.OnboardingAdapter
+import com.newscheck.databinding.FragmentSignInBinding
 import com.newscheck.ui.signup.SignUpFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class OnboardingFragment : Fragment() {
+class SignInFragment : Fragment() {
 
-    private var binding: FragmentOnboardingBinding? = null
+    private var binding: FragmentSignInBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentOnboardingBinding.inflate(inflater, container, false)
+        binding = FragmentSignInBinding.inflate(inflater, container, false)
         return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding?.skipTextView?.setOnClickListener {
+        binding?.goToSignUpTextView?.setOnClickListener{
             parentFragmentManager.beginTransaction()
                 .replace(R.id.container, SignUpFragment())
                 .commit()
         }
-        binding?.pagerView?.adapter = OnboardingAdapter(parentFragmentManager)
-        binding?.indicator?.setViewPager(binding?.pagerView)
+
     }
+
 }
