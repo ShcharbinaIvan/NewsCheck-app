@@ -15,4 +15,9 @@
     <string name="already_registered_go_to_login">Already registered? Go to login</string>
     <string name="sign_in">Sign In</string>
     <string name="don_t_have_an_account_register">Don\'t have an account? Register</string>
+    <string name="news">News</string>
+    <string name="profile">Profile</string>
+    <string name="newsline">Newsline</string>
+    <string name="filter">Filter</string>
+    <string name="image">Image</string>
 </resources>

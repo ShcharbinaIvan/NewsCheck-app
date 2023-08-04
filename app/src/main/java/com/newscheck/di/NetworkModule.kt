@@ -1,6 +1,6 @@
 package com.newscheck.di
 
-import com.newscheck.network.Api
+import com.newscheck.network.NewsApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -9,19 +9,16 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import javax.inject.Singleton
 
-private const val BASE_URL = "http://api.mediastack.com/v1/"
 
 @Module
 @InstallIn(SingletonComponent::class)
 class NetworkModule {
 
     @Provides
-    @Singleton
-    fun providesApi(): Api {
+    fun providesNews(): NewsApi {
         val retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl("http://api.mediastack.com/v1/")
             .client(
                 OkHttpClient().newBuilder()
                     .addInterceptor(HttpLoggingInterceptor().apply {
@@ -31,6 +28,6 @@ class NetworkModule {
             )
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-        return retrofit.create(Api::class.java)
+        return retrofit.create(NewsApi::class.java)
     }
 }

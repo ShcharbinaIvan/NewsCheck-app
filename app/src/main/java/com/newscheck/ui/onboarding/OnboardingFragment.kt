@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.newscheck.R
 import com.newscheck.databinding.FragmentOnboardingBinding
+import com.newscheck.ui.allnews.AllNewsFragment
 import com.newscheck.ui.onboarding.adapter.OnboardingAdapter
-import com.newscheck.ui.signup.SignUpFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -29,7 +29,7 @@ class OnboardingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding?.skipTextView?.setOnClickListener {
             parentFragmentManager.beginTransaction()
-                .replace(R.id.container, SignUpFragment())
+                .replace(R.id.container, AllNewsFragment())
                 .commit()
         }
         binding?.pagerView?.adapter = OnboardingAdapter(parentFragmentManager)
