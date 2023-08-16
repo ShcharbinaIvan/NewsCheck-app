@@ -6,27 +6,35 @@
     android:background="@color/background">
 
     <ImageView
-        android:id="@+id/image_news"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:layout_marginStart="@dimen/dp_16"
-        android:layout_marginTop="@dimen/dp_16"
+        android:id="@+id/imageNewsImageView"
+        android:layout_width="@dimen/dp_180"
+        android:layout_height="@dimen/dp_120"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/text_news"
+        app:layout_constraintEnd_toStartOf="@id/titleTextView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/text_news"
+        android:id="@+id/titleTextView"
         style="@style/OnboardTextStyle"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/dp_16"
-        android:layout_marginEnd="@dimen/dp_16"
-        android:gravity="center"
+        android:layout_width="@dimen/dp_200"
+        android:layout_height="@dimen/dp_100"
+        android:layout_marginEnd="@dimen/dp_8"
+        android:gravity="start"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/image_news"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/imageNewsImageView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/sourceTextView"
+        style="@style/OnboardTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageNewsImageView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

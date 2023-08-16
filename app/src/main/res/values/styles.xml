@@ -24,4 +24,8 @@
     <style name="OnboardTextStyle.C1">
         <item name="android:textColor">@color/white</item>
     </style>
+
+    <style name="OnboardTextStyle.C2">
+        <item name="android:textColor">@color/red</item>
+    </style>
 </resources>
