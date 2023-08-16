@@ -1,5 +1,8 @@
 package com.newscheck.di
 
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.newscheck.network.NewsApi
 import dagger.Module
 import dagger.Provides
@@ -30,4 +33,8 @@ class NetworkModule {
             .build()
         return retrofit.create(NewsApi::class.java)
     }
+
+    @Provides
+    fun provideFirebaseAuth(): FirebaseAuth = Firebase.auth
+
 }

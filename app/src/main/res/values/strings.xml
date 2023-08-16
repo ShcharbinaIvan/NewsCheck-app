@@ -20,4 +20,8 @@
     <string name="newsline">Newsline</string>
     <string name="filter">Filter</string>
     <string name="image">Image</string>
+    <string name="invalid_email_address">Invalid email address</string>
+    <string name="must_contain_1_uppercase_character">Must contain 1 uppercase character</string>
+    <string name="must_be_8_to_16_characters">Must be 8 to 16 characters</string>
+    <string name="password_mismatch">Password mismatch</string>
 </resources>

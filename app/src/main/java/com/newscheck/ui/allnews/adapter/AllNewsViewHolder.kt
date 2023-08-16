@@ -10,10 +10,11 @@ class AllNewsViewHolder(private val binding: ItemAllNewsBinding) : ViewHolder(bi
 
     fun bind(data: News) {
         binding.run {
-            textNews.text = data.description
-            Glide.with(imageNews.context)
+            titleTextView.text = data.title
+            sourceTextView.text = data.source
+            Glide.with(imageNewsImageView.context)
                 .load(data.image)
-                .into(imageNews)
+                .into(imageNewsImageView)
         }
     }
 }
