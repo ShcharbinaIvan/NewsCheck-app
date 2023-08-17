@@ -17,6 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class AllNewsFragment : Fragment() {
 
     private var binding: FragmentAllNewsBinding? = null
+
     private val viewModel: AllNewsViewModel by viewModels()
 
     override fun onCreateView(
