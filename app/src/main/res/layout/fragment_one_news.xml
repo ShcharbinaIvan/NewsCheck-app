@@ -16,16 +16,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/oneImageView"
-        android:layout_width="@dimen/dp_300"
-        android:layout_height="@dimen/dp_200"
+    <TextView
+        android:id="@+id/titleTextView"
+        style="@style/OnboardTextStyle"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_16"
         android:layout_marginTop="@dimen/dp_16"
         android:layout_marginEnd="@dimen/dp_16"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/oneNameTextView" />
+
+    <ImageView
+        android:id="@+id/oneImageView"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_200"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleTextView" />
 
     <ImageView
         android:id="@+id/favoriteImageView"
@@ -62,12 +74,32 @@
         app:layout_constraintTop_toBottomOf="@id/favoriteImageView" />
 
     <TextView
-        android:id="@+id/linkTextView"
+        android:id="@+id/sourceTextView"
         style="@style/OnboardTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_16"
         android:layout_marginTop="@dimen/dp_16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/oneNewsTextView" />
+
+    <TextView
+        android:id="@+id/dateTextView"
+        style="@style/OnboardTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/oneNewsTextView" />
+
+    <TextView
+        android:id="@+id/linkTextView"
+        style="@style/OnboardTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_48"
         android:layout_marginEnd="@dimen/dp_16"
         android:padding="@dimen/dp_24"
         android:text="@string/see_the_news_in_full_on_the_site"
