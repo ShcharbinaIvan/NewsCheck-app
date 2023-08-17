@@ -16,10 +16,11 @@ class AllNewsViewModel @Inject constructor(
 ) : ViewModel() {
 
     var news = MutableLiveData<ArrayList<News>>()
+    var oneNews=MutableLiveData<News>()
 
-    fun getNews() {
+    fun getNews(cat:String) {
         viewModelScope.launch(Dispatchers.IO) {
-            val response = newsRepository.getNews()
+            val response = newsRepository.getNews(cat)
             if (response.isSuccessful) {
                 news.postValue(
                     response.body()?.data

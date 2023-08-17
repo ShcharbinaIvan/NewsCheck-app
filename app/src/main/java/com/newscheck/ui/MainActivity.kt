@@ -2,7 +2,6 @@ package com.newscheck.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.newscheck.ui.allnews.AllNewsFragment
 import com.newscheck.R
 import com.newscheck.repositories.ProfileRepository
 import com.newscheck.ui.onboarding.OnboardingFragment

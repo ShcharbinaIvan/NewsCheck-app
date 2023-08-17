@@ -9,16 +9,17 @@ private const val API_KEY = "29c743a02ddbbbd28bccaaf9a5113596"
 private const val COUNTRIES = "us"
 private const val SOURCES = "cnn"
 private const val LIMIT = 100
+private const val SORT = "published_desc"
 
 interface NewsApi {
 
     @GET("news")
     suspend fun getNews(
+        @Query("categories") categories: String,
         @Query("access_key") access_key: String = API_KEY,
         @Query("countries") countries: String = COUNTRIES,
         @Query("sources") sources: String = SOURCES,
         @Query("limit") limit: Int = LIMIT,
-        @Query("sort") sort: String = "published_desc",
-        @Query("categories") categories: String = "sports"
+        @Query("sort") sort: String = SORT,
     ): Response<NewsResponse>
 }

@@ -34,6 +34,7 @@ class ProfileFragment : Fragment() {
             favoriteImageView.setOnClickListener {
                 parentFragmentManager.beginTransaction()
                     .replace(R.id.containerNavigation, LikeNewsFragment())
+                    .addToBackStack(LikeNewsFragment.TAG)
                     .commit()
             }
             logOutImageView.setOnClickListener {
