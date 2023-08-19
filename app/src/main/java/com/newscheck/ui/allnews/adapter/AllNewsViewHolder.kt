@@ -8,7 +8,7 @@ import com.newscheck.model.News
 
 class AllNewsViewHolder(private val binding: ItemAllNewsBinding) : ViewHolder(binding.root) {
 
-    val textView = binding.readTextView
+    val textView = binding.titleTextView
 
     fun bind(data: News) {
         binding.run {

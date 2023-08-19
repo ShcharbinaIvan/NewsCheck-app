@@ -7,6 +7,8 @@ import com.newscheck.model.News
 
 class LikeNewsViewHolder(private val binding: ItemLikeNewsBinding) : ViewHolder(binding.root) {
 
+    val textView=binding.titleTextView
+
     fun bind(data: News) {
         binding.run {
             titleTextView.text = data.title

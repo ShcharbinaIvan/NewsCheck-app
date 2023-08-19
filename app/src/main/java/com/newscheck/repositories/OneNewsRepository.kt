@@ -5,26 +5,12 @@ import com.newscheck.model.News
 import com.newscheck.model.entity.NewsEntity
 import javax.inject.Inject
 
-class LikeNewsRepository @Inject constructor(
+class OneNewsRepository @Inject constructor(
     private val newsDao: NewsDao
 ) {
 
-    suspend fun getNews(): ArrayList<News> {
-        return (newsDao.getNews().map {
-            News(
-                it.category,
-                it.description,
-                it.image,
-                it.published_at,
-                it.source,
-                it.title,
-                it.url
-            )
-        } as ArrayList<News>)
-    }
-
-    suspend fun deleteNews(news: News) {
-        newsDao.deleteNews(
+    suspend fun saveNews(news: News) {
+        newsDao.saveNews(
             NewsEntity(
                 0,
                 news.category,

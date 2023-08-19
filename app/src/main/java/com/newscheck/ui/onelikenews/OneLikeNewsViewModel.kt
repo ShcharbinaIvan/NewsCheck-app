@@ -1,6 +1,5 @@
-package com.newscheck.ui.likenews
+package com.newscheck.ui.onelikenews
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.newscheck.model.News
@@ -11,16 +10,13 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LikeNewsViewModel @Inject constructor(
+class OneLikeNewsViewModel @Inject constructor(
     private val likeNewsRepository: LikeNewsRepository
 ) : ViewModel() {
 
-    val newsList = MutableLiveData<ArrayList<News>>()
-
-    fun getNews() {
+    fun deleteNews(news: News) {
         viewModelScope.launch(Dispatchers.IO) {
-            newsList.postValue(likeNewsRepository.getNews())
+            likeNewsRepository.deleteNews(news)
         }
     }
-
 }

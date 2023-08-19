@@ -26,7 +26,7 @@
     <string name="password_mismatch">Password mismatch</string>
     <string name="log_out">Log Out</string>
     <string name="favorites">Favorites</string>
-    <string name="see_the_news_in_full_on_the_site">Сlick to view full website</string>
+    <string name="see_the_news_in_full_on_the_site">Open in website</string>
     <string name="delete_news">Are you sure you want to delete this post?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>

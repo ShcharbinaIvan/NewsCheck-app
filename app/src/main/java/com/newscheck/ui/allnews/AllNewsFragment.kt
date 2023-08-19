@@ -58,7 +58,6 @@ class AllNewsFragment : Fragment() {
     }
 
     private fun goToNews(news: News) {
-        viewModel.oneNews.postValue(news)
         parentFragmentManager.beginTransaction()
             .replace(R.id.containerNavigation, OneNewsFragment.getFragment(news))
             .addToBackStack(OneNewsFragment.TAG)
