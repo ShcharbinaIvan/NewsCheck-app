@@ -1,5 +1,7 @@
 package com.newscheck.ui.onenews
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +11,6 @@ import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.newscheck.databinding.FragmentOneNewsBinding
 import com.newscheck.model.News
-import com.newscheck.ui.allnews.AllNewsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 private const val NEWS_EXTRA = "newsExtra"
@@ -19,7 +20,7 @@ class OneNewsFragment : Fragment() {
 
     private var binding: FragmentOneNewsBinding? = null
 
-    private val viewModel: AllNewsViewModel by viewModels()
+    private val viewModel: OneNewsViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,12 +38,20 @@ class OneNewsFragment : Fragment() {
             Glide.with(oneImageView.context)
                 .load(news?.image)
                 .into(oneImageView)
-            oneNewsTextView.text=news?.description
-            titleTextView.text=news?.title
-            sourceTextView.text=news?.source
-            dateTextView.text=news?.published_at?.substring(0,10)
+            oneNewsTextView.text = news?.description
+            titleTextView.text = news?.title
+            sourceTextView.text = news?.source
+            dateTextView.text = news?.published_at?.substring(0, 10)
+            favoriteImageView.setOnClickListener {
+                if (news != null) {
+                    viewModel.saveNews(news)
+                    
+                }
+            }
             linkTextView.setOnClickListener {
-
+                val address: Uri = Uri.parse(news?.url)
+                val openLinkIntent = Intent(Intent.ACTION_VIEW, address)
+                startActivity(openLinkIntent)
             }
         }
     }

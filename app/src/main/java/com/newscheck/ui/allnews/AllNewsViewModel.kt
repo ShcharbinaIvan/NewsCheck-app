@@ -16,7 +16,6 @@ class AllNewsViewModel @Inject constructor(
 ) : ViewModel() {
 
     var news = MutableLiveData<ArrayList<News>>()
-    var oneNews=MutableLiveData<News>()
 
     fun getNews(cat:String) {
         viewModelScope.launch(Dispatchers.IO) {

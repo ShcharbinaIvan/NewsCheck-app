@@ -12,6 +12,8 @@ import com.newscheck.R
 import com.newscheck.databinding.FragmentLikeNewsBinding
 import com.newscheck.model.News
 import com.newscheck.ui.likenews.adapter.LikeNewsAdapter
+import com.newscheck.ui.onelikenews.OneLikeNewsFragment
+
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -42,7 +44,9 @@ class LikeNewsFragment : Fragment() {
     private fun setListNews(list: ArrayList<News>) {
         binding?.newsRecyclerView?.run {
             if (adapter == null) {
-                adapter = LikeNewsAdapter()
+                adapter = LikeNewsAdapter { news, _ ->
+                    goToLikeNews(news)
+                }
                 layoutManager = LinearLayoutManager(requireContext())
             }
             (adapter as? LikeNewsAdapter)?.submitList(list)
@@ -50,16 +54,12 @@ class LikeNewsFragment : Fragment() {
         }
     }
 
-    private fun showDeleteDialog(news: News) {
-        AlertDialog.Builder(requireContext())
-            .setTitle(getString(R.string.delete_news))
-            .setPositiveButton(getString(R.string.yes)) { _, _ ->
-                viewModel.deleteNews(news)
-            }
-            .setNegativeButton(getString(R.string.no)) { _, _ ->
 
-            }
-            .show()
+    private fun goToLikeNews(news: News) {
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.containerNavigation, OneLikeNewsFragment.getLikeFragment(news))
+            .addToBackStack(OneLikeNewsFragment.TAG)
+            .commit()
     }
 
     companion object {
