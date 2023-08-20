@@ -7,8 +7,9 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "News")
 data class NewsEntity(
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo("id")
     val id: Int,
+    @ColumnInfo("email")
+    val email:String,
     @ColumnInfo("category")
     val category: String,
     @ColumnInfo("description")

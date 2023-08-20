@@ -9,6 +9,7 @@
         android:id="@+id/imageNewsImageView"
         android:layout_width="@dimen/dp_180"
         android:layout_height="@dimen/dp_120"
+        android:contentDescription="@string/image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/titleTextView"
         app:layout_constraintStart_toStartOf="parent"

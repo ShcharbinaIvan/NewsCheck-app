@@ -1,17 +1,21 @@
 package com.newscheck.repositories
 
+import com.google.firebase.auth.FirebaseAuth
 import com.newscheck.db.NewsDao
 import com.newscheck.model.News
 import com.newscheck.model.entity.NewsEntity
 import javax.inject.Inject
 
 class LikeNewsRepository @Inject constructor(
-    private val newsDao: NewsDao
+    private val newsDao: NewsDao,
+    private val auth: FirebaseAuth
 ) {
 
-    suspend fun getNews(): ArrayList<News> {
-        return (newsDao.getNews().map {
+    suspend fun getNews(email:String): ArrayList<News> {
+        return (newsDao.getNews(email).map {
             News(
+                it.id,
+                it.email,
                 it.category,
                 it.description,
                 it.image,
@@ -26,7 +30,8 @@ class LikeNewsRepository @Inject constructor(
     suspend fun deleteNews(news: News) {
         newsDao.deleteNews(
             NewsEntity(
-                0,
+                news.id,
+                news.email,
                 news.category,
                 news.description,
                 news.image,
@@ -36,6 +41,10 @@ class LikeNewsRepository @Inject constructor(
                 news.url
             )
         )
+    }
+
+    fun getEmail(): String {
+        return auth.currentUser?.email.toString()
     }
 
 }

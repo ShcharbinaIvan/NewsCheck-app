@@ -47,17 +47,24 @@ class OneLikeNewsFragment : Fragment() {
             sourceTextView.text = news?.source
             dateTextView.text = news?.published_at?.substring(0, 10)
             deleteImageView.setOnClickListener {
-                    news?.let { it1 -> showDeleteDialog(it1) }
-                }
+                news?.let { it1 -> showDeleteDialog(it1) }
+            }
             linkTextView.setOnClickListener {
                 val address: Uri = Uri.parse(news?.url)
                 val openLinkIntent = Intent(Intent.ACTION_VIEW, address)
                 startActivity(openLinkIntent)
             }
+            shareImageView.setOnClickListener {
+                val sendIntent = Intent()
+                sendIntent.action = Intent.ACTION_SEND
+                sendIntent.putExtra(Intent.EXTRA_TEXT, news?.url)
+                sendIntent.type = "text/plain"
+                startActivity(Intent.createChooser(sendIntent, getString(R.string.share)))
+            }
         }
     }
 
-        private fun showDeleteDialog(news: News) {
+    private fun showDeleteDialog(news: News) {
         AlertDialog.Builder(requireContext())
             .setTitle(getString(R.string.delete_news))
             .setNegativeButton(getString(R.string.no)) { _, _ ->
@@ -82,4 +89,5 @@ class OneLikeNewsFragment : Fragment() {
                 }
             }
     }
+
 }

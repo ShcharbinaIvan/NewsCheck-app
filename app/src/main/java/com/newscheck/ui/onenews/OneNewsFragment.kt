@@ -6,9 +6,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
+import com.newscheck.R
 import com.newscheck.databinding.FragmentOneNewsBinding
 import com.newscheck.model.News
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,6 +33,7 @@ class OneNewsFragment : Fragment() {
         return binding?.root
     }
 
+    @Suppress("DEPRECATION")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val news = arguments?.getParcelable<News>(NEWS_EXTRA)
@@ -45,13 +48,21 @@ class OneNewsFragment : Fragment() {
             favoriteImageView.setOnClickListener {
                 if (news != null) {
                     viewModel.saveNews(news)
-                    
+                    Toast.makeText(context, getString(R.string.news_saved), Toast.LENGTH_LONG).show()
+
                 }
             }
             linkTextView.setOnClickListener {
                 val address: Uri = Uri.parse(news?.url)
                 val openLinkIntent = Intent(Intent.ACTION_VIEW, address)
                 startActivity(openLinkIntent)
+            }
+            shareImageView.setOnClickListener {
+                val sendIntent = Intent()
+                sendIntent.action = Intent.ACTION_SEND
+                sendIntent.putExtra(Intent.EXTRA_TEXT, news?.url)
+                sendIntent.type = "text/plain"
+                startActivity(Intent.createChooser(sendIntent, getString(R.string.share)))
             }
         }
     }

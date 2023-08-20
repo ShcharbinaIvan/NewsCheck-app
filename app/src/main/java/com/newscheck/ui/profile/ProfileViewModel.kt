@@ -6,19 +6,20 @@ import com.newscheck.repositories.ProfileRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
+
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
     private val profileRepository: ProfileRepository
 ) : ViewModel() {
 
-    var email = ""
+    val email1 = MutableLiveData<String>()
 
     fun logOut() {
         profileRepository.logOut()
     }
 
     fun getEmail() {
-        email = profileRepository.getEmail().toString()
+        email1.postValue(profileRepository.getEmail())
     }
 
 }

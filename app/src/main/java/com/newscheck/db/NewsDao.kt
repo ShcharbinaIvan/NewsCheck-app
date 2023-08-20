@@ -12,8 +12,8 @@ interface NewsDao {
     @Insert
     suspend fun saveNews(news: NewsEntity)
 
-    @Query("SELECT * FROM News")
-    suspend fun getNews(): List<NewsEntity>
+    @Query("SELECT * FROM News where email = :email")
+    suspend fun getNews(email:String): List<NewsEntity>
 
     @Delete
     suspend fun deleteNews(news: NewsEntity)

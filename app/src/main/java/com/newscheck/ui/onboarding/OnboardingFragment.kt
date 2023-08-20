@@ -7,10 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.newscheck.R
 import com.newscheck.databinding.FragmentOnboardingBinding
-import com.newscheck.ui.NavigationFragment
-import com.newscheck.ui.allnews.AllNewsFragment
 import com.newscheck.ui.onboarding.adapter.OnboardingAdapter
-import com.newscheck.ui.signin.SignInFragment
 import com.newscheck.ui.signup.SignUpFragment
 import dagger.hilt.android.AndroidEntryPoint
 

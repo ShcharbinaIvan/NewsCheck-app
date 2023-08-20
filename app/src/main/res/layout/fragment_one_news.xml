@@ -35,6 +35,7 @@
         android:layout_marginStart="@dimen/dp_16"
         android:layout_marginTop="@dimen/dp_16"
         android:layout_marginEnd="@dimen/dp_16"
+        android:contentDescription="@string/image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titleTextView" />
@@ -44,6 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_16"
+        android:contentDescription="@string/image"
         android:src="@drawable/ic_add"
         app:layout_constraintBottom_toTopOf="@id/oneNewsTextView"
         app:layout_constraintEnd_toStartOf="@id/shareImageView"
@@ -54,6 +56,7 @@
         android:id="@+id/shareImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/image"
         android:src="@drawable/ic_share"
         app:layout_constraintBottom_toTopOf="@id/oneNewsTextView"
         app:layout_constraintEnd_toEndOf="parent"
