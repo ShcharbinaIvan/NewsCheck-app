@@ -17,9 +17,15 @@ class LikeNewsViewModel @Inject constructor(
 
     val newsList = MutableLiveData<ArrayList<News>>()
 
+    var email = ""
+
+    fun getEmail() {
+        email = likeNewsRepository.getEmail()
+    }
+
     fun getNews() {
         viewModelScope.launch(Dispatchers.IO) {
-            newsList.postValue(likeNewsRepository.getNews())
+            newsList.postValue(likeNewsRepository.getNews(email))
         }
     }
 

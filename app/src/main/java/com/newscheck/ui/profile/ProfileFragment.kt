@@ -43,7 +43,10 @@ class ProfileFragment : Fragment() {
                     .replace(R.id.container, SignInFragment())
                     .commit()
             }
-            personTextView.text = viewModel.email
+            viewModel.email1.observe(viewLifecycleOwner) {
+                personTextView.text = it
+            }
+//            personTextView.text = viewModel.email
         }
     }
 }

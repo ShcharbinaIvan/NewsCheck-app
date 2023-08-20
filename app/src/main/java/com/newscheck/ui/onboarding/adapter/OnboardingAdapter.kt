@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.newscheck.ui.onboarding.adapter
 
 import androidx.fragment.app.Fragment

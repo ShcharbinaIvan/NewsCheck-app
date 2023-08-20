@@ -1,6 +1,6 @@
 package com.newscheck.ui.likenews
 
-import android.app.AlertDialog
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -34,13 +34,14 @@ class LikeNewsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getNews()
+        viewModel.getEmail()
         viewModel.newsList.observe(viewLifecycleOwner) {
             setListNews(it)
         }
-
+        viewModel.getNews()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun setListNews(list: ArrayList<News>) {
         binding?.newsRecyclerView?.run {
             if (adapter == null) {

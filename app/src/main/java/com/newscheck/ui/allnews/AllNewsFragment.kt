@@ -1,11 +1,13 @@
 package com.newscheck.ui.allnews
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,11 +16,16 @@ import com.newscheck.databinding.FragmentAllNewsBinding
 
 import com.newscheck.ui.allnews.adapter.AllNewsAdapter
 import com.newscheck.model.News
+import com.newscheck.repositories.NetworkStatusRepository
 import com.newscheck.ui.onenews.OneNewsFragment
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class AllNewsFragment : Fragment() {
+
+    var networkStatusRepository: NetworkStatusRepository? = null
+        @Inject set
 
     private var binding: FragmentAllNewsBinding? = null
 
@@ -35,15 +42,23 @@ class AllNewsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getNews("")
-        binding?.filterImageView?.setOnClickListener {
-            showPopup(it)
-        }
-        viewModel.news.observe(viewLifecycleOwner) {
-            setListNews(it)
+        networkStatusRepository?.networkStatus?.observe(viewLifecycleOwner) { it ->
+            if (it) {
+                viewModel.getNews("")
+                viewModel.news.observe(viewLifecycleOwner) { it1 ->
+                    setListNews(it1)
+                    binding?.filterImageView?.setOnClickListener {
+                        showPopup(it)
+                    }
+                }
+            } else {
+                binding?.noInternetImageView?.visibility = View.VISIBLE
+                Toast.makeText(context, getString(R.string.no_internet_connection), Toast.LENGTH_LONG).show()
+            }
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun setListNews(list: ArrayList<News>) {
         binding?.newsRecyclerView?.run {
             if (adapter == null) {
