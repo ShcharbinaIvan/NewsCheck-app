@@ -17,7 +17,7 @@ class LikeNewsViewModel @Inject constructor(
 
     val newsList = MutableLiveData<ArrayList<News>>()
 
-    var email = ""
+    private var email = ""
 
     fun getEmail() {
         email = likeNewsRepository.getEmail()
