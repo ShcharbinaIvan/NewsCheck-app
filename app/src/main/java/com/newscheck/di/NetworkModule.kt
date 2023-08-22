@@ -13,6 +13,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+private const val BASE_URL = "http://api.mediastack.com/v1/"
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -21,7 +22,7 @@ class NetworkModule {
     @Provides
     fun providesNews(): NewsApi {
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://api.mediastack.com/v1/")
+            .baseUrl(BASE_URL)
             .client(
                 OkHttpClient().newBuilder()
                     .addInterceptor(HttpLoggingInterceptor().apply {

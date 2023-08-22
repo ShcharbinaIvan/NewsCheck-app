@@ -16,6 +16,7 @@ import com.newscheck.model.News
 import dagger.hilt.android.AndroidEntryPoint
 
 private const val NEWS_EXTRA = "newsExtra"
+private const val TYPE = "text/plain"
 
 @AndroidEntryPoint
 class OneNewsFragment : Fragment() {
@@ -44,7 +45,7 @@ class OneNewsFragment : Fragment() {
             oneNewsTextView.text = news?.description
             titleTextView.text = news?.title
             sourceTextView.text = news?.source
-            dateTextView.text = news?.published_at?.substring(0, 10)
+            dateTextView.text = news?.publishedAt?.substring(0, 10)
             favoriteImageView.setOnClickListener {
                 if (news != null) {
                     viewModel.saveNews(news)
@@ -61,7 +62,7 @@ class OneNewsFragment : Fragment() {
                 val sendIntent = Intent()
                 sendIntent.action = Intent.ACTION_SEND
                 sendIntent.putExtra(Intent.EXTRA_TEXT, news?.url)
-                sendIntent.type = "text/plain"
+                sendIntent.type = TYPE
                 startActivity(Intent.createChooser(sendIntent, getString(R.string.share)))
             }
         }

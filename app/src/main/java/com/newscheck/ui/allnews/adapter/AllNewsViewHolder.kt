@@ -5,7 +5,6 @@ import com.bumptech.glide.Glide
 import com.newscheck.databinding.ItemAllNewsBinding
 import com.newscheck.model.News
 
-
 class AllNewsViewHolder(private val binding: ItemAllNewsBinding) : ViewHolder(binding.root) {
 
     val textView = binding.titleTextView
@@ -19,4 +18,5 @@ class AllNewsViewHolder(private val binding: ItemAllNewsBinding) : ViewHolder(bi
                 .into(imageNewsImageView)
         }
     }
+
 }

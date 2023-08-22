@@ -66,9 +66,11 @@ class SignUpFragment : Fragment() {
     }
 
     private fun validate(): Boolean {
-        binding?.emailTextInputLayout?.helperText = validateEmail()
-        binding?.passwordTextInputLayout?.helperText = validatePassword()
-        binding?.confirmpasswordTextInputLayout?.helperText = validateConfirmPassword()
+        binding?.run {
+            emailTextInputLayout.helperText = validateEmail()
+            passwordTextInputLayout.helperText = validatePassword()
+            confirmpasswordTextInputLayout.helperText = validateConfirmPassword()
+        }
         val validEmail = binding?.emailTextInputLayout?.helperText
         val validPassword = binding?.passwordTextInputLayout?.helperText
         val validConfirmPassword = binding?.passwordTextInputLayout?.helperText

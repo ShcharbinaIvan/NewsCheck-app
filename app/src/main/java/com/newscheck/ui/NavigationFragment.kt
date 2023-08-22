@@ -33,16 +33,12 @@ class NavigationFragment : Fragment() {
             ?.setOnItemSelectedListener {
                 when (it.itemId) {
                     R.id.allNews -> {
-                        parentFragmentManager.beginTransaction()
-                            .replace(R.id.containerNavigation, AllNewsFragment())
-                            .commit()
+                        toFragment(AllNewsFragment())
                         return@setOnItemSelectedListener true
                     }
 
                     R.id.profile -> {
-                        parentFragmentManager.beginTransaction()
-                            .replace(R.id.containerNavigation, ProfileFragment())
-                            .commit()
+                        toFragment(ProfileFragment())
                         return@setOnItemSelectedListener true
 
                     }
@@ -50,6 +46,12 @@ class NavigationFragment : Fragment() {
                     else -> return@setOnItemSelectedListener true
                 }
             }
+    }
+
+    private fun toFragment(fragment: Fragment) {
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.containerNavigation, fragment)
+            .commit()
     }
 
 }

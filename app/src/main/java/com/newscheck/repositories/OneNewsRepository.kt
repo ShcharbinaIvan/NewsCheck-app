@@ -19,7 +19,7 @@ class OneNewsRepository @Inject constructor(
                 news.category,
                 news.description,
                 news.image,
-                news.published_at,
+                news.publishedAt,
                 news.source,
                 news.title,
                 news.url
