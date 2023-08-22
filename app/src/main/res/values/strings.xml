@@ -1,3 +1,45 @@
 <resources>
     <string name="app_name">NewsCheck</string>
+    <string name="skip">Skip</string>
+    <string name="newscheck">NewsCheck</string>
+    <string name="onboardingimage">OnboardingImage</string>
+    <string name="first_onboard_text">Watch the latest news from around the world</string>
+    <string name="second_onboard_text">Add your favorite news to your collection</string>
+    <string name="third_onboard_text">Choose the categories you like</string>
+    <string name="first_name">First Name</string>
+    <string name="second_name">Second Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="already_registered_go_to_login">Already registered? Go to login</string>
+    <string name="sign_in">Sign In</string>
+    <string name="don_t_have_an_account_register">Don\'t have an account? Register</string>
+    <string name="news">News</string>
+    <string name="profile">Profile</string>
+    <string name="newsline">Newsline</string>
+    <string name="filter">Filter</string>
+    <string name="image">Image</string>
+    <string name="invalid_email_address">Invalid email address</string>
+    <string name="must_contain_1_uppercase_character">Must contain 1 uppercase character</string>
+    <string name="must_be_8_to_16_characters">Must be 8 to 16 characters</string>
+    <string name="password_mismatch">Password mismatch</string>
+    <string name="log_out">Log Out</string>
+    <string name="favorites">Favorites</string>
+    <string name="see_the_news_in_full_on_the_site">Open in website</string>
+    <string name="delete_news">Are you sure you want to delete this post?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="general">general</string>
+    <string name="entertainment">entertainment</string>
+    <string name="sports">sports</string>
+    <string name="general2">General</string>
+    <string name="entertainment2">Entertainment</string>
+    <string name="sports2">Sports</string>
+    <string name="no_internet_connection">No Internet Connection</string>
+    <string name="don_t_forget_to_check_out_the_latest_news">Don\'t forget to check out the latest news!</string>
+    <string name="share">Share</string>
+    <string name="news_saved">News saved!</string>
+    <string name="ok">OK</string>
+
 </resources>

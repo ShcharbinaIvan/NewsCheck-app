@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "230776683898",
+    "project_id": "newscheck-25df8",
+    "storage_bucket": "newscheck-25df8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:230776683898:android:7adf688c6f92e698ddeac3",
+        "android_client_info": {
+          "package_name": "com.newscheck"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "230776683898-maq5o2lj4a2bka4vv27cmcjanmrdkcdk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD90-5G4G1UB4fFVlif6xC7FCw3PWfZJ6g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "230776683898-maq5o2lj4a2bka4vv27cmcjanmrdkcdk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
