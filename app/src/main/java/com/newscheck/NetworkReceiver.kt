@@ -15,7 +15,7 @@ class NetworkReceiver : BroadcastReceiver() {
         @Inject set
 
     override fun onReceive(context: Context?, intent: Intent?) {
-        netWorkStatusRepository?.networkStatus?.value = context?.getNetworkStatus()
+        netWorkStatusRepository?.updateNetworkStatus(context?.getNetworkStatus() ?: false)
     }
 
 }

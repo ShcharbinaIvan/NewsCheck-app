@@ -11,6 +11,8 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+private const val DATA_BASE = "data-base"
+
 @Module
 @InstallIn(SingletonComponent::class)
 class DataBaseModule {
@@ -18,7 +20,7 @@ class DataBaseModule {
     @Provides
     @Singleton
     fun providesNews(@ApplicationContext context: Context): NewsDao {
-        return Room.databaseBuilder(context, AppDataBase::class.java, "data-base").build().getNewsDao()
+        return Room.databaseBuilder(context, AppDataBase::class.java, DATA_BASE).build().getNewsDao()
     }
 
 }

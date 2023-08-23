@@ -1,12 +1,18 @@
 package com.newscheck.repositories
 
-import androidx.lifecycle.MutableLiveData
+import kotlinx.coroutines.flow.MutableStateFlow
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class NetworkStatusRepository @Inject constructor() {
 
-    val networkStatus = MutableLiveData(true)
+    private val networkStatus = MutableStateFlow(true)
+
+    fun getNetworkState() = networkStatus
+
+    fun updateNetworkStatus(isConnected: Boolean) {
+        networkStatus.value = isConnected
+    }
 
 }

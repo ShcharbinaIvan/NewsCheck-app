@@ -7,47 +7,37 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.work.Constraints
 import androidx.work.NetworkType
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import com.newscheck.NetworkReceiver
 import com.newscheck.R
-import com.newscheck.repositories.NetworkStatusRepository
-import com.newscheck.repositories.ProfileRepository
-import com.newscheck.repositories.SharedPreferenceRepository
 import com.newscheck.ui.onboarding.OnboardingFragment
 import com.newscheck.ui.signin.SignInFragment
 import com.newscheck.utill.getNetworkStatus
 import com.newscheck.worker.NotificationWorker
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.concurrent.TimeUnit
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    var profileRepository: ProfileRepository? = null
-        @Inject set
-
-    var networkStatusRepository: NetworkStatusRepository? = null
-        @Inject set
-
-    var sharedPreferencesRepository: SharedPreferenceRepository? = null
-        @Inject set
+    private val viewModel: MainViewModel by viewModels()
 
     private val receiver = NetworkReceiver()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        if (sharedPreferencesRepository?.firstOpenApp() == true) {
-            sharedPreferencesRepository?.setFirstOpenApp(false)
+        if (viewModel.getIsFirstOpen()) {
+            viewModel.setFirstOpen(false)
             supportFragmentManager.beginTransaction()
                 .replace(R.id.container, OnboardingFragment())
                 .commit()
         } else {
-            profileRepository?.let { logInCheck(it.isUserLogin()) }
+            logInCheck(viewModel.getIsUserLogin())
         }
         networkStatus(receiver)
         val constraints = Constraints.Builder()
@@ -99,7 +89,7 @@ class MainActivity : AppCompatActivity() {
             addAction(ConnectivityManager.CONNECTIVITY_ACTION)
         }
         registerReceiver(receiver, filter)
-        networkStatusRepository?.networkStatus?.value = this.getNetworkStatus()
+        viewModel.updateNetworkStatus(this.getNetworkStatus())
     }
 
 }
