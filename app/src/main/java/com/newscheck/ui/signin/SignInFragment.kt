@@ -65,8 +65,10 @@ class SignInFragment : Fragment() {
     }
 
     private fun validate(): Boolean {
-        binding?.emailTextInputLayout?.helperText = validateEmail()
-        binding?.passwordTextInputLayout?.helperText = validatePassword()
+        binding?.run {
+            emailTextInputLayout.helperText = validateEmail()
+            passwordTextInputLayout.helperText = validatePassword()
+        }
         val validEmail = binding?.emailTextInputLayout?.helperText
         val validPassword = binding?.passwordTextInputLayout?.helperText
         if (validEmail == null && validPassword == null) {

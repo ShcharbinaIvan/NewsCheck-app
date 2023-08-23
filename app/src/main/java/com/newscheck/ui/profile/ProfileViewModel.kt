@@ -12,14 +12,14 @@ class ProfileViewModel @Inject constructor(
     private val profileRepository: ProfileRepository
 ) : ViewModel() {
 
-    val email1 = MutableLiveData<String>()
+    val email = MutableLiveData<String>()
 
     fun logOut() {
         profileRepository.logOut()
     }
 
     fun getEmail() {
-        email1.postValue(profileRepository.getEmail())
+        email.postValue(profileRepository.getEmail())
     }
 
 }

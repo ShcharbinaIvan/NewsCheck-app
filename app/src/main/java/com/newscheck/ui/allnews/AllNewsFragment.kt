@@ -10,22 +10,18 @@ import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.newscheck.R
 import com.newscheck.databinding.FragmentAllNewsBinding
-
 import com.newscheck.ui.allnews.adapter.AllNewsAdapter
 import com.newscheck.model.News
-import com.newscheck.repositories.NetworkStatusRepository
 import com.newscheck.ui.onenews.OneNewsFragment
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class AllNewsFragment : Fragment() {
-
-    var networkStatusRepository: NetworkStatusRepository? = null
-        @Inject set
 
     private var binding: FragmentAllNewsBinding? = null
 
@@ -42,19 +38,22 @@ class AllNewsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        networkStatusRepository?.networkStatus?.observe(viewLifecycleOwner) { it ->
-            if (it) {
-                viewModel.getNews("")
-                viewModel.news.observe(viewLifecycleOwner) { it1 ->
-                    setListNews(it1)
-                    binding?.filterImageView?.setOnClickListener {
-                        showPopup(it)
+        lifecycleScope.launch {
+            viewModel.getNetworkState()
+                .collect {
+                    if (it) {
+                        viewModel.getNews("")
+                        viewModel.news.observe(viewLifecycleOwner) { it1 ->
+                            setListNews(it1)
+                            binding?.filterImageView?.setOnClickListener { it2 ->
+                                showPopup(it2)
+                            }
+                        }
+                    } else {
+                        binding?.noInternetImageView?.visibility = View.VISIBLE
+                        Toast.makeText(context, getString(R.string.no_internet_connection), Toast.LENGTH_LONG).show()
                     }
                 }
-            } else {
-                binding?.noInternetImageView?.visibility = View.VISIBLE
-                Toast.makeText(context, getString(R.string.no_internet_connection), Toast.LENGTH_LONG).show()
-            }
         }
     }
 
@@ -102,4 +101,5 @@ class AllNewsFragment : Fragment() {
         }
         popup.show()
     }
+
 }

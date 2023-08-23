@@ -17,6 +17,7 @@ import com.newscheck.ui.likenews.LikeNewsFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 private const val NEWS_EXTRA_ONE = "newsExtraOne"
+private const val TYPE = "text/plain"
 
 @Suppress("DEPRECATION")
 @AndroidEntryPoint
@@ -45,7 +46,7 @@ class OneLikeNewsFragment : Fragment() {
             oneNewsTextView.text = news?.description
             titleLikeTextView.text = news?.title
             sourceTextView.text = news?.source
-            dateTextView.text = news?.published_at?.substring(0, 10)
+            dateTextView.text = news?.publishedAt?.substring(0, 10)
             deleteImageView.setOnClickListener {
                 news?.let { it1 -> showDeleteDialog(it1) }
             }
@@ -58,7 +59,7 @@ class OneLikeNewsFragment : Fragment() {
                 val sendIntent = Intent()
                 sendIntent.action = Intent.ACTION_SEND
                 sendIntent.putExtra(Intent.EXTRA_TEXT, news?.url)
-                sendIntent.type = "text/plain"
+                sendIntent.type = TYPE
                 startActivity(Intent.createChooser(sendIntent, getString(R.string.share)))
             }
         }

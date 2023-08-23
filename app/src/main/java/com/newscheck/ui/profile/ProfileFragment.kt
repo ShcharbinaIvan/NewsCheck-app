@@ -43,10 +43,9 @@ class ProfileFragment : Fragment() {
                     .replace(R.id.container, SignInFragment())
                     .commit()
             }
-            viewModel.email1.observe(viewLifecycleOwner) {
+            viewModel.email.observe(viewLifecycleOwner) {
                 personTextView.text = it
             }
-//            personTextView.text = viewModel.email
         }
     }
 }

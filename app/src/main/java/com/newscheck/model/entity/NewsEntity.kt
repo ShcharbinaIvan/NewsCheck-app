@@ -17,7 +17,7 @@ data class NewsEntity(
     @ColumnInfo("image")
     val image: String,
     @ColumnInfo("published_at")
-    val published_at: String,
+    val publishedAt: String,
     @ColumnInfo("source")
     val source: String,
     @ColumnInfo("title")
